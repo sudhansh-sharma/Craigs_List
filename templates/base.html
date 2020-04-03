@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang = 'en'>
+        <head>
+            <meta charset ='UTF-8'>
+            <title>Jaugor7 Scrapper's</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+            <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}"  media="screen,projection"/>
+            <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+        </head>
+        <body>
+            <nav>
+                <div class = "container nav-wrapper">
+                    <a href = '/' class = "brand-logo"> My Craig Lists</a>
+                    <ul id = "nav-mobile" class = "right">
+                        <li><a href ="/">Home</a>
+                    </ul>
+                </div>
+            </nav>
+        <div class="container">
+            <h4 style = "text-align:center">What Do You Wanna Search For On My Craigs List</h4>
+
+            <div class = "row">
+                <div class="col s4">
+                    <div class = "center">
+                        <i class=" large material-icons" style="color: #EE6E73">flash_on</i>
+                        <p>Fast Craiglists web scrapper</p>
+                        <p class="light center"> Scrap away right here with a Beautiful GUI.</p>
+                    </div>  
+                </div>
+
+                <div class="col s4">
+                    <div class = "center">
+                        <i class=" large material-icons" style="color:orange">camera</i>
+                        <p>Filter Your Search</p>
+                        <p class="light center">We built functionality to filter based on pricing.</p>
+                    </div>  
+                </div>
+
+                <div class="col s4">
+                    <div class = "center">
+                        <i class=" large material-icons" style="color:blue">chrome_reader_mode</i>
+                        <p>A much sexier front-end to Craigslist</p>
+                        <p class="light center">We built this with 💖</p>
+                    </div>  
+                </div>
+            </div>
+
+            <form action="{% url 'new_search' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="search" placeholder="Enter Your Query">
+                <button class="btn waves-effect waves-light" type="submit" name="action" >Begin Search
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        
+        {% block content %}
+
+        {% endblock %}
+        </div>
+
+        </body>
+    </html>
